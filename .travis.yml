@@ -1,5 +1,7 @@
 language: python
 os: osx
+python:
+  - "3.5"
 script:
   - python3 -m unittest -v tests/unit_tests/unit_tests
   - pytest
