@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import string
 import json
-import parser
+import command_parser
 from collections import Counter
 from text_manager import get_stream
 from itertools import cycle
@@ -86,12 +86,13 @@ def hack(input_filename, output_filename, model_filename):
         output_file.write(text)
 
 
-args = parser.command_parser.parse_args()
-if args.method == 'encode':
-    process(args.cipher, args.key, args.input_file, args.output_file, is_encoding=True)
-elif args.method == 'decode':
-    process(args.cipher, args.key, args.input_file, args.output_file, is_encoding=False)
-elif args.method == 'train':
-    train(args.text_file, args.model_file)
-elif args.method == 'hack':
-    hack(args.input_file, args.output_file, args.model_file)
+if __name__ == '__main__':
+    args = command_parser.command_parser.parse_args()
+    if args.method == 'encode':
+        process(args.cipher, args.key, args.input_file, args.output_file, is_encoding=True)
+    elif args.method == 'decode':
+        process(args.cipher, args.key, args.input_file, args.output_file, is_encoding=False)
+    elif args.method == 'train':
+        train(args.text_file, args.model_file)
+    elif args.method == 'hack':
+        hack(args.input_file, args.output_file, args.model_file)
