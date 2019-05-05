@@ -4,8 +4,6 @@ python:
 script:
   - python3 -m unittest -v tests/unit_tests/unit_tests
   - pytest
-install:
-  - pip install -r requirements.txt
 notifications:
   email:
     - abramov.ed@phystech.edu
